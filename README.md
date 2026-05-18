@@ -4,6 +4,10 @@
 
 A SPA built with **Angular 21** to generate digital service budgets (SEO, Ads, Web).
 
+## 🌐 Live Demo
+
+Deployed on Netlify: [https://agent-6a0b82a1faaefb79ddedf3db--budget-angular.netlify.app/](https://agent-6a0b82a1faaefb79ddedf3db--budget-angular.netlify.app/)
+
 ## 🚀 Quick Start
 
 ```bash

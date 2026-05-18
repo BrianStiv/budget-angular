@@ -4,6 +4,10 @@
 
 Aplicación SPA en **Angular 21** para generar presupuestos de servicios digitales (SEO, Ads, Web).
 
+## 🌐 Demo en Vivo
+
+Desplegado en Netlify: [https://agent-6a0b82a1faaefb79ddedf3db--budget-angular.netlify.app/](https://agent-6a0b82a1faaefb79ddedf3db--budget-angular.netlify.app/)
+
 ## 🚀 Inicio Rápido
 
 ```bash
