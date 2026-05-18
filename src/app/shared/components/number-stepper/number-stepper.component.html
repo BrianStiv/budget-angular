@@ -4,8 +4,8 @@
     <span>{{ label() }}:</span>
   </div>
   <div class="flex items-center gap-2">
-    <button class="w-7 h-7 flex items-center justify-center border border-gray-200 bg-white rounded text-gray-600 text-base hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" (click)="decrement()" [disabled]="value() <= min()">−</button>
+    <button class="w-7 h-7 flex items-center justify-center border border-gray-200 bg-white rounded text-gray-600 text-base hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" (click)="decrement()" [disabled]="value() <= min()" [attr.aria-label]="'Restar ' + label()">−</button>
     <input type="number" [value]="value()" (input)="updateValue($any($event.target).value)" [min]="min()" [max]="max()" [attr.aria-label]="label()" class="w-12 h-8 text-center text-sm font-semibold text-gray-900 border border-gray-200 rounded-md [-moz-appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none focus:border-[#28a745] outline-none" />
-    <button class="w-7 h-7 flex items-center justify-center border border-gray-200 bg-white rounded text-gray-600 text-base hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" (click)="increment()" [disabled]="value() >= max()">+</button>
+    <button class="w-7 h-7 flex items-center justify-center border border-gray-200 bg-white rounded text-gray-600 text-base hover:bg-gray-50 disabled:opacity-40 disabled:cursor-not-allowed transition-colors" (click)="increment()" [disabled]="value() >= max()" [attr.aria-label]="'Sumar ' + label()">+</button>
   </div>
 </div>

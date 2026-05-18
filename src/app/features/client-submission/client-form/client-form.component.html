@@ -21,13 +21,13 @@
     @if (isSubmitted) {
     <div class="flex flex-col gap-1">
       @if (isFieldInvalid('name')) {
-      <p class="text-[13px] text-red-500 m-0">El nom és obligatori</p>
+      <p class="text-[13px] text-red-500 m-0" role="alert">El nom és obligatori</p>
       } @if (isFieldInvalid('phone')) {
-      <p class="text-[13px] text-red-500 m-0">Telèfon no vàlid</p>
+      <p class="text-[13px] text-red-500 m-0" role="alert">Telèfon no vàlid</p>
       } @if (isFieldInvalid('email')) {
-      <p class="text-[13px] text-red-500 m-0">Email no vàlid</p>
+      <p class="text-[13px] text-red-500 m-0" role="alert">Email no vàlid</p>
       } @if (selectionService.totalPrice() === 0) {
-      <p class="text-[13px] text-red-500 m-0">Selecciona almenys un servei</p>
+      <p class="text-[13px] text-red-500 m-0" role="alert">Selecciona almenys un servei</p>
       }
     </div>
     } @if (successMessage) {
