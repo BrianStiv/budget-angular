@@ -1,0 +1,41 @@
+[
+  {
+    "id": "seo",
+    "name": "SEO",
+    "description": "Optimització per a cercadors",
+    "basePrice": 300,
+    "hasSubCosts": false
+  },
+  {
+    "id": "ads",
+    "name": "Google Ads",
+    "description": "Campanyes de publicitat a Google",
+    "basePrice": 400,
+    "hasSubCosts": false
+  },
+  {
+    "id": "web",
+    "name": "Web",
+    "description": "Programació d'una web responsive completa",
+    "basePrice": 500,
+    "hasSubCosts": true,
+    "subCosts": [
+      {
+        "id": "pages",
+        "label": "Nombre de pàgines",
+        "pricePerUnit": 30,
+        "min": 1,
+        "max": 10,
+        "default": 1
+      },
+      {
+        "id": "languages",
+        "label": "Nombre d'idiomes",
+        "pricePerUnit": 30,
+        "min": 1,
+        "max": 5,
+        "default": 1
+      }
+    ]
+  }
+]
