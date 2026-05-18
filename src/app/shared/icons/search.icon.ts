@@ -1,0 +1,1 @@
+export const searchIcon = `<svg viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="2"/><path d="M11 11L14 14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>`;

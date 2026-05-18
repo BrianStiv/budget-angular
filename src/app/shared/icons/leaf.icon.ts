@@ -1,0 +1,1 @@
+export const leafIcon = `<svg viewBox="0 0 40 50" fill="none"><path d="M20 5C20 5 35 15 35 30C35 40 28 45 20 45C12 45 5 40 5 30C5 15 20 5 20 5Z" fill="#4CAF50" opacity="0.8"/><path d="M20 10V40" stroke="#2E7D32" stroke-width="1.5"/></svg>`;

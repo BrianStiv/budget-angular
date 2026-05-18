@@ -1,0 +1,1 @@
+export const shareIcon = `<svg viewBox="0 0 16 16" fill="none"><circle cx="13" cy="3" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="3" cy="8" r="2" stroke="currentColor" stroke-width="1.5"/><circle cx="13" cy="13" r="2" stroke="currentColor" stroke-width="1.5"/><path d="M5 9L11 12M5 7L11 4" stroke="currentColor" stroke-width="1.5"/></svg>`;
