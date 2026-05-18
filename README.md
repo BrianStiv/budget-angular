@@ -1,59 +1,151 @@
-# BudgetAngular
+# Budgets - Digital Budget Generator
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.11.
+🌐 [Español](README.es.md)
 
-## Development server
+A SPA built with **Angular 21** to generate digital service budgets (SEO, Ads, Web).
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🚀 Quick Start
 
 ```bash
-ng generate component component-name
+# Install dependencies
+pnpm install
+
+# Development server
+pnpm start
+# → http://localhost:4200
+
+# Production build
+pnpm build
+
+# Run tests
+pnpm test
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## 🏗️ Architecture
+
+```
+src/app/
+├── app.ts                     # Root shell + isHome() signal + RouterOutlet
+├── app.html                   # Conditional template (home vs routed pages)
+├── app.routes.ts              # Routes (lazy-loaded /budget/:id)
+│
+├── core/                      # Singleton services (business logic)
+│   ├── config/
+│   │   └── services.types.ts      # Types for service configuration
+│   └── services/
+│       ├── budget-factory.service.ts    # Budget factory + unique ID generation
+│       ├── budget-history.service.ts    # localStorage persistence
+│       ├── selection.service.ts         # Service selection state
+│       ├── services-config.service.ts   # services.json loader
+│       ├── pdf.service.ts               # PDF generation with jsPDF
+│       └── share.service.ts             # Web Share API + clipboard
+│
+├── features/                  # Independent business modules
+│   ├── budget-builder/
+│   │   ├── banner/
+│   │   │   ├── banner.component.ts
+│   │   │   └── banner.component.html
+│   │   └── service-card/
+│   │       ├── service-card.component.ts
+│   │       └── service-card.component.html
+│   │
+│   ├── budget-detail/
+│   │   ├── budget-detail.component.ts
+│   │   └── budget-detail.component.html
+│   │
+│   ├── client-submission/
+│   │   └── client-form/
+│   │       ├── client-form.component.ts
+│   │       └── client-form.component.html
+│   │
+│   └── budget-history/
+│       ├── budget-history.component.ts
+│       └── budget-history.component.html
+│
+├── shared/                    # Reusable components
+│   ├── components/
+│   │   ├── svg-icon/
+│   │   │   └── svg-icon.component.ts
+│   │   ├── total-display/
+│   │   │   ├── total-display.component.ts
+│   │   │   └── total-display.component.html
+│   │   ├── number-stepper/
+│   │   │   ├── number-stepper.component.ts
+│   │   │   └── number-stepper.component.html
+│   │   └── sort-button/
+│   │       ├── sort-button.component.ts
+│   │       └── sort-button.component.html
+│   │
+│   ├── icons/                 # 8 SVG icons as strings
+│   │
+│   └── utils/                 # Pure functions
+│       ├── budget-filter.utils.ts    # Budget filtering
+│       ├── budget-sort.utils.ts      # Budget sorting
+│       └── budget.utils.ts           # Sub-cost formatting
+│
+└── models/                    # TypeScript interfaces
+    └── budget.model.ts
+
+public/
+└── services.json              # Externalized service configuration
+```
+
+## 🛠️ Tech Stack
+
+| Category        | Technology                               |
+| --------------- | ---------------------------------------- |
+| Framework       | Angular 21.2.0                           |
+| State           | Signals (`signal`, `computed`, `effect`) |
+| Input/Output    | `input()`, `output()` signals            |
+| Control Flow    | `@if`, `@for`, `@empty`                  |
+| Styling         | Tailwind CSS v4                          |
+| Forms           | Reactive Forms                           |
+| Routing         | Angular Router (lazy-loaded)             |
+| Package Manager | pnpm                                     |
+| Testing         | Vitest + jsdom                           |
+| PDF             | jsPDF (lazy-loaded)                      |
+| Formatting      | Prettier + prettier-plugin-tailwindcss   |
+
+## 📊 Features
+
+- **Service selector**: SEO (€300), Ads (€400), Web (€500 + configuration)
+- **Web configuration**: Pages (1-10) and languages (1-5) with steppers
+- **Real-time pricing**: Reactive updates with signals
+- **Client form**: Reactive validation with error messages
+- **History**: Search (name/email/phone), sorting (date/price/name), empty state
+- **Budget detail**: Unique URL `/budget/:id` with full breakdown
+- **PDF export**: Dynamic generation with jsPDF
+- **Sharing**: Web Share API + clipboard fallback
+- **Responsive**: Mobile-first with Tailwind
+- **Accessible**: WCAG AA, focus-visible, aria-labels, role="checkbox", aria-pressed, keyboard navigation
+
+## 🧪 Tests
+
+**63 tests passing** across 12 spec files (54 unit + 9 integration).
 
 ```bash
-ng generate --help
+pnpm test          # watch mode
+pnpm test -- --run # single run
 ```
 
-## Building
+## 📋 Commands
 
-To build the project run:
+| Command                        | Description            |
+| ------------------------------ | ---------------------- |
+| `pnpm start`                   | Development server     |
+| `pnpm build`                   | Production build       |
+| `pnpm watch`                   | Dev build with watch   |
+| `pnpm test`                    | Tests in watch mode    |
+| `pnpm test -- --run`           | Tests single run       |
+| `ng generate component <name>` | Generate new component |
 
-```bash
-ng build
-```
+## ⚙️ Configuration
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Services are externalized in `public/services.json` — no hardcoded labels. Any change to names, prices, or sub-costs is reflected automatically.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+**Version:** 1.0.0  
+**Angular:** 21.2.0  
+**Package Manager:** pnpm  
+**Tests:** 63/63 passing
