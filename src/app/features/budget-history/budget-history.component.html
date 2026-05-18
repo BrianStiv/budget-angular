@@ -8,7 +8,7 @@
         <app-svg-icon name="search" class="absolute right-3 top-1/2 -translate-y-1/2 w-4.5 h-4.5"></app-svg-icon>
       </div>
       <div class="flex gap-1">
-        @for (btn of [{ label: 'Data', field: 'date' as const }, { label: 'Import', field: 'price' as const }, { label: 'Nom', field: 'name' as const }]; track btn.field) {
+        @for (btn of sortOptions; track btn.field) {
         <app-sort-button [label]="btn.label" [field]="btn.field" [activeSort]="sortBy()" [activeOrder]="sortOrder()" (sortChange)="toggleSort($event)" />
         }
       </div>

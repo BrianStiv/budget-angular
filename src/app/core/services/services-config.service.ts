@@ -28,12 +28,12 @@ export class ServicesConfigService {
     for (const entry of raw) {
       if (typeof entry !== 'object' || entry === null) throw new Error('Entry no es objeto');
       const e = entry as Record<string, unknown>;
-      if (typeof e.id !== 'string' || !VALID_SERVICE_IDS.includes(e.id as any))
-        throw new Error(`ID inválido: ${e.id}`);
-      if (typeof e.name !== 'string') throw new Error('Falta name');
-      if (typeof e.description !== 'string') throw new Error('Falta description');
-      if (typeof e.basePrice !== 'number') throw new Error('Falta basePrice');
-      if (typeof e.hasSubCosts !== 'boolean') throw new Error('Falta hasSubCosts');
+      if (typeof e['id'] !== 'string' || !VALID_SERVICE_IDS.includes(e['id'] as any))
+        throw new Error(`ID inválido: ${e['id']}`);
+      if (typeof e['name'] !== 'string') throw new Error('Falta name');
+      if (typeof e['description'] !== 'string') throw new Error('Falta description');
+      if (typeof e['basePrice'] !== 'number') throw new Error('Falta basePrice');
+      if (typeof e['hasSubCosts'] !== 'boolean') throw new Error('Falta hasSubCosts');
     }
     return raw as ServiceConfigEntry[];
   }

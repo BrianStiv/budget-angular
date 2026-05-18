@@ -16,10 +16,11 @@
       </label>
     </div>
   </div>
-  @if (id() === 'web' && isSelected()) {
+  @if (hasSubCosts() && isSelected()) {
   <div class="px-6 md:px-8 pb-6 md:pb-8 flex flex-col gap-4" (click)="$event.stopPropagation()">
-    <app-number-stepper label="Nombre de pàgines" [value]="pages()" [min]="1" [max]="10" (valueChange)="onSubCostChange('pages', $event)" />
-    <app-number-stepper label="Nombre de llenguatges" [value]="languages()" [min]="1" [max]="5" (valueChange)="onSubCostChange('languages', $event)" />
+    @for (subCost of subCosts(); track subCost.id) {
+    <app-number-stepper [label]="subCost.label" [value]="subCostValues()[subCost.id] ?? subCost.default" [min]="subCost.min" [max]="subCost.max" (valueChange)="onSubCostChange(subCost.id, $event)" />
+    }
   </div>
   }
 </div>

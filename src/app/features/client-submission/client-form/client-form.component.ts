@@ -13,7 +13,7 @@ import { SvgIconComponent } from '../../../shared/components/svg-icon/svg-icon.c
 })
 export class ClientFormComponent {
   private readonly fb = inject(FormBuilder);
-  private readonly selectionService = inject(SelectionService);
+  protected readonly selectionService = inject(SelectionService);
   private readonly budgetHistoryService = inject(BudgetHistoryService);
   private readonly budgetFactoryService = inject(BudgetFactoryService);
 

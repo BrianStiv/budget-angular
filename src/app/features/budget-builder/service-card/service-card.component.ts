@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { ServiceId } from '../../../models/budget.model';
+import { SubCost, ServiceId } from '../../../models/budget.model';
 import { NumberStepperComponent } from '../../../shared/components/number-stepper/number-stepper.component';
 
 @Component({
@@ -14,17 +14,18 @@ export class ServiceCardComponent {
   description = input.required<string>();
   basePrice = input.required<number>();
   isSelected = input(false);
-  pages = input(1);
-  languages = input(1);
+  hasSubCosts = input(false);
+  subCosts = input<SubCost[]>([]);
+  subCostValues = input<Record<string, number | undefined>>({});
 
   toggle = output<ServiceId>();
-  subCostChange = output<{ serviceId: ServiceId; subCostId: string; value: number }>();
+  subCostChange = output<{ subCostId: string; value: number }>();
 
   onToggle(): void {
     this.toggle.emit(this.id());
   }
 
   onSubCostChange(subCostId: string, value: number): void {
-    this.subCostChange.emit({ serviceId: this.id(), subCostId, value });
+    this.subCostChange.emit({ subCostId, value });
   }
 }

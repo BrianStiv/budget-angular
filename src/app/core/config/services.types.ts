@@ -1,3 +1,5 @@
+import { ServiceId } from '../../models/budget.model';
+
 export interface SubCostConfig {
   id: string;
   label: string;
@@ -8,7 +10,7 @@ export interface SubCostConfig {
 }
 
 export interface ServiceConfigEntry {
-  id: string;
+  id: ServiceId;
   name: string;
   description: string;
   basePrice: number;
